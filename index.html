@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achintya Singh | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Fira+Code:wght@400;600&family=Montserrat:wght@300;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Montserrat', 'sans-serif'],
+                        'script': ['Dancing Script', 'cursive'],
+                        'mono': ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        'brand-green': '#4ade80',
+                        'dark-bg': '#050505',
+                        'code-kw': '#a78bfa',
+                        'code-func': '#61afef',
+                        'code-str': '#4ade80',
+                        'code-prop': '#facc15',
+                        'code-num': '#fb7185',
+                    },
+                    backgroundImage: {
+                        'grain': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')",
+                    },
+                    animation: {
+                        'fade-in-out': 'breathe 3s ease-in-out infinite',
+                        'slide-up': 'slideUp 1.5s ease-out forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                        'slide-in-right': 'slideInRight 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        breathe: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.4' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideInRight: {
+                            '0%': { transform: 'translateX(20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { cursor: none; }
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+
+        .custom-cursor {
+            pointer-events: none;
+            position: fixed;
+            top: 0; left: 0;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+        .glow-spot {
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0) 70%);
+        }
+        .delay-500 { animation-delay: 500ms; }
+        
+        .perspective-container { perspective: 1000px; }
+        .code-card-3d {
+            transform: rotateX(5deg);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+        .code-card-3d:hover { transform: rotateX(0deg) scale(1.02); }
+
+        .magnified-layer { clip-path: circle(0% at 0 0); }
+    </style>
+</head>
+<body class="bg-dark-bg text-white font-sans antialiased selection:bg-brand-green selection:text-black">
+
+    <div id="cursor-dot" class="custom-cursor w-2 h-2 bg-brand-green rounded-full shadow-[0_0_10px_rgba(74,222,128,0.5)]"></div>
+    <div id="cursor-outline" class="custom-cursor w-10 h-10 border border-brand-green/50 rounded-full transition-all duration-150 ease-out"></div>
+    <div id="cursor-outer-ring" class="custom-cursor w-16 h-16 border border-brand-green/30 rounded-full transition-all duration-300 ease-out"></div>
+    
+    <nav class="fixed w-full z-50 top-0 left-0 px-6 py-4 flex justify-between items-center backdrop-blur-sm bg-black/30 border-b border-white/10">
+        <div class="text-xl font-bold tracking-widest text-white hover:text-brand-green transition-colors cursor-none">ACHINTYA</div>
+        <div class="hidden md:flex space-x-8 text-xs font-black uppercase tracking-widest text-gray-400">
+            <a href="#home" class="hover-trigger relative group hover:text-white transition-colors duration-300 cursor-none">Home <span class="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-brand-green transition-all duration-300 ease-out group-hover:w-full"></span></a>
+            <a href="#about" class="hover-trigger relative group hover:text-white transition-colors duration-300 cursor-none">About <span class="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-brand-green transition-all duration-300 ease-out group-hover:w-full"></span></a>
+            <a href="#work" class="hover-trigger relative group hover:text-white transition-colors duration-300 cursor-none">Work <span class="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-brand-green transition-all duration-300 ease-out group-hover:w-full"></span></a>
+            <a href="#contact" class="hover-trigger relative group hover:text-white transition-colors duration-300 cursor-none">Contact <span class="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-brand-green transition-all duration-300 ease-out group-hover:w-full"></span></a>
+        </div>
+        <button onclick="openModal()" class="hover-trigger relative overflow-hidden px-6 py-2 border border-white/20 rounded-full text-xs font-bold uppercase tracking-widest group cursor-none">
+            <span class="absolute inset-0 bg-brand-green transition-transform duration-500 ease-out origin-right scale-x-0 group-hover:origin-left group-hover:scale-x-100"></span>
+            <span class="relative z-10 group-hover:text-black transition-colors duration-300">Get in touch</span>
+        </button>
+    </nav>
+
+    <section id="home" class="relative h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-grain">
+        <div class="absolute inset-0 glow-spot z-0 pointer-events-none"></div>
+        <div class="relative z-10 text-center flex flex-col items-center w-full">
+            <p class="text-gray-500 tracking-[0.3em] text-sm md:text-base mb-2 uppercase font-medium">Full Stack Developer</p>
+            
+            <div class="relative w-full flex justify-center items-center h-[200px]">
+                <h1 class="absolute text-[14vw] md:text-[12rem] leading-none font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-600 select-none opacity-90 z-0">Portfolio</h1>
+                
+                <div id="magnify-container" class="absolute -bottom-28 rotate-[-5deg] opacity-0 animate-slide-up delay-500 cursor-none z-20 hover-trigger group flex items-center justify-center">
+                    <div id="hover-badge" class="absolute z-30 whitespace-nowrap px-4 py-2 bg-white/5 backdrop-blur-md border border-white/20 rounded-full text-[10px] md:text-xs tracking-widest uppercase font-bold text-gray-300 animate-float transition-all duration-500 group-hover:opacity-0 group-hover:scale-110 pointer-events-none">
+                        Hover to see my name
+                    </div>
+                    <p class="text-4xl md:text-7xl font-script text-transparent select-none opacity-0">Achintya Singh</p>
+                    <p id="magnify-glass" class="magnified-layer absolute top-0 left-0 text-4xl md:text-7xl font-script text-white drop-shadow-2xl select-none scale-[1.35] origin-center">
+                        Achintya Singh
+                    </p>
+                </div>
+
+                <div class="absolute right-4 md:right-10 top-1/2 transform -translate-y-1/2 flex flex-col items-end gap-4 z-40" style="margin-top: 40px;">
+                    <button id="reveal-btn" class="hover-trigger flex items-center gap-2 px-3 py-2 bg-brand-green/10 hover:bg-brand-green/20 backdrop-blur-md border border-brand-green/30 rounded-full text-[10px] tracking-widest uppercase font-bold text-brand-green transition-all duration-300 hover:scale-110 cursor-none">
+                        Click Me
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    </button>
+                    <div id="hero-code-card" class="hidden perspective-container animate-slide-in-right">
+                        <div class="code-card-3d bg-gray-900/90 backdrop-blur-xl border border-white/10 p-4 rounded-xl shadow-2xl max-w-[300px]">
+                            <div class="flex gap-2 mb-3">
+                                <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                            </div>
+                            <pre class="font-mono text-xs text-gray-300 whitespace-pre-wrap leading-relaxed"><span class="text-code-kw">console</span>.<span class="text-code-func">log</span>(<span class="text-code-str">"Welcome to Swapnil's Portfolio 🚀"</span>);</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-32 md:mt-44">
+                <p class="text-sm md:text-xl text-gray-300 tracking-[0.2em] font-light uppercase border-t border-b border-gray-800 py-3 px-6 animate-fade-in-out">Debugger of Life <span class="text-brand-green mx-2">•</span> Coder in Progress</p>
+            </div>
+        </div>
+        
+        <a href="#about" class="absolute bottom-10 animate-bounce hover-trigger text-gray-500 hover:text-brand-green transition-colors duration-300 cursor-none z-20 p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </a>
+    </section>
+
+    <section id="about" class="py-24 px-6 md:px-20 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">About Me</h2>
+                <div class="text-gray-400 leading-relaxed mb-8 space-y-4">
+                    <p>I’m Achintya Singh, a passionate Full-Stack Web Developer and B.Tech student who enjoys building modern, scalable, and user-friendly web applications. I love transforming ideas into real products and creating clean, responsive digital experiences.</p>
+                    <p>Currently, I’m focused on developing full-stack applications, including e-commerce platforms, where I work with both frontend UI/UX and backend APIs. I enjoy solving real-world problems through technology and continuously improving my development workflow using Git, cloud services, and modern web technologies.</p>
+                    <p>Alongside web development, I actively practice Data Structures and Algorithms in Java, strengthening my problem-solving and logical thinking skills. I’m always exploring new technologies, improving my coding practices, and building projects that combine design, performance, and scalability.</p>
+                </div>
+
+                <h3 class="text-xl font-bold text-white mb-4">🎯 What I’m Currently Working On</h3>
+                <ul class="list-none text-gray-400 mb-8 space-y-2">
+                    <li class="flex items-center gap-2"><span class="text-brand-green">▹</span> Building a Plant & Furniture E-Commerce Website</li>
+                    <li class="flex items-center gap-2"><span class="text-brand-green">▹</span> Improving Data Structures and Algorithms</li>
+                    <li class="flex items-center gap-2"><span class="text-brand-green">▹</span> Learning advanced full-stack development</li>
+                </ul>
+
+                <h3 class="text-xl font-bold text-white mb-4">💻 Tech Stack</h3>
+                <div class="flex flex-wrap gap-3">
+                    <span class="hover-trigger px-4 py-2 bg-gray-900 border border-gray-800 rounded-full text-sm text-orange-500 hover:bg-orange-500 hover:text-black hover:shadow-[0_0_20px_rgba(249,115,22,0.6)] hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-none">HTML5</span>
+                    <span class="hover-trigger px-4 py-2 bg-gray-900 border border-gray-800 rounded-full text-sm text-blue-500 hover:bg-blue-500 hover:text-black hover:shadow-[0_0_20px_rgba(59,130,246,0.6)] hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-none">CSS3</span>
+                    <span class="hover-trigger px-4 py-2 bg-gray-900 border border-gray-800 rounded-full text-sm text-yellow-400 hover:bg-yellow-400 hover:text-black hover:shadow-[0_0_20px_rgba(250,204,21,0.6)] hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-none">JavaScript</span>
+                    <span class="hover-trigger px-4 py-2 bg-gray-900 border border-gray-800 rounded-full text-sm text-green-500 hover:bg-green-500 hover:text-black hover:shadow-[0_0_20px_rgba(34,197,94,0.6)] hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-none">Node.js</span>
+                    <span class="hover-trigger px-4 py-2 bg-gray-900 border border-gray-800 rounded-full text-sm text-gray-300 hover:bg-gray-300 hover:text-black hover:shadow-[0_0_20px_rgba(209,213,219,0.6)] hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-none">Express.js</span>
+                    <span class="hover-trigger px-4 py-2 bg-gray-900 border border-gray-800 rounded-full text-sm text-green-400 hover:bg-green-400 hover:text-black hover:shadow-[0_0_20px_rgba(74,222,128,0.6)] hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-none">MongoDB</span>
+                    <span class="hover-trigger px-4 py-2 bg-gray-900 border border-gray-800 rounded-full text-sm text-blue-400 hover:bg-blue-400 hover:text-black hover:shadow-[0_0_20px_rgba(96,165,250,0.6)] hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-none">Cloudinary</span>
+                    <span class="hover-trigger px-4 py-2 bg-gray-900 border border-gray-800 rounded-full text-sm text-orange-600 hover:bg-orange-600 hover:text-black hover:shadow-[0_0_20px_rgba(234,88,12,0.6)] hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-none">Git & GitHub</span>
+                    <span class="hover-trigger px-4 py-2 bg-gray-900 border border-gray-800 rounded-full text-sm text-blue-600 hover:bg-blue-600 hover:text-black hover:shadow-[0_0_20px_rgba(37,99,235,0.6)] hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-none">VS Code</span>
+                    <span class="hover-trigger px-4 py-2 bg-gray-900 border border-gray-800 rounded-full text-sm text-red-500 hover:bg-red-500 hover:text-black hover:shadow-[0_0_20px_rgba(239,68,68,0.6)] hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-none">Java (DSA)</span>
+                </div>
+            </div>
+            <div class="perspective-container flex justify-center lg:justify-end">
+                <div class="code-card-3d w-full max-w-lg bg-gradient-to-br from-[#0b1220] to-[#05080f] rounded-2xl p-6 border border-white/5 hover-trigger cursor-none mt-10 lg:mt-0">
+                    <div class="flex gap-2 mb-4">
+                        <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                        <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                        <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                    </div>
+                    <pre class="font-mono text-xs md:text-sm leading-relaxed text-gray-300 overflow-x-auto">
+<span class="text-code-kw">const</span> <span class="text-code-func">swapnil</span> = {
+  <span class="text-code-prop">name</span>: <span class="text-code-str">"Achintya Singh"</span>,
+  <span class="text-code-prop">role</span>: <span class="text-code-str">"Full Stack Web Developer"</span>,
+  <span class="text-code-prop">focus</span>: <span class="text-code-str">"MERN Stack & Java DSA"</span>,
+  <span class="text-code-prop">skills</span>: [
+    <span class="text-code-str">"Node.js"</span> <i class="devicon-nodejs-plain colored text-base ml-1 align-middle"></i>,
+    <span class="text-code-str">"Express"</span> <i class="devicon-express-original text-white text-base ml-1 align-middle"></i>,
+    <span class="text-code-str">"MongoDB"</span> <i class="devicon-mongodb-plain colored text-base ml-1 align-middle"></i>,
+    <span class="text-code-str">"Java"</span> <i class="devicon-java-plain colored text-base ml-1 align-middle"></i>
+  ],
+  <span class="text-code-prop">status</span>: <span class="text-code-str">"Building scalable apps..."</span>
+};</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="py-24 bg-black/50">
+        <div class="max-w-7xl mx-auto px-6 md:px-20">
+            <h2 class="text-gray-500 text-sm tracking-widest uppercase mb-12 border-l-2 border-brand-green pl-4">Selected Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <a href="https://nature-vibes-e-commerce-website-rt8.vercel.app/" target="_blank" rel="noopener noreferrer" class="hover-trigger group relative aspect-video bg-gray-900 rounded-xl overflow-hidden border border-gray-800 cursor-none hover:border-brand-green/50 transition-colors block">
+                    <img src="https://ik.imagekit.io/eventsection/Gemini_Generated_Image_hwcibfhwcibfhwci.png"
+                         alt="UrbanVibes E-Commerce Platform" 
+                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-70"></div>
+                    
+                    <div class="absolute bottom-0 left-0 p-8 transform group-hover:translate-y-[-5px] transition-transform z-10 w-full">
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-2 text-white group-hover:text-brand-green transition-colors">UrbanVibes</h3>
+                                <p class="text-sm text-gray-400">Full-stack platform for plants & furnitures. Features production-level CRUD operations.</p>
+                            </div>
+                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-brand-green mb-2">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://college-event-page.vercel.app/" target="_blank" rel="noopener noreferrer" class="hover-trigger group relative aspect-video bg-gray-900 rounded-xl overflow-hidden border border-gray-800 cursor-none hover:border-brand-green/50 transition-colors block">
+                    <img src="https://ik.imagekit.io/eventsection/Gemini_Generated_Image_hf8exghf8exghf8e.png"
+                         alt="College Fresher Event Platform" 
+                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-70"></div>
+                    
+                    <div class="absolute bottom-0 left-0 p-8 transform group-hover:translate-y-[-5px] transition-transform z-10 w-full">
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-2 text-white group-hover:text-brand-green transition-colors">College Fresher Event</h3>
+                                <p class="text-sm text-gray-400">Production-level event management portal with full CRUD capabilities.</p>
+                            </div>
+                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-brand-green mb-2">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-32 px-6 text-center relative overflow-hidden border-b border-white/5">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-brand-green/5 blur-[120px] rounded-full pointer-events-none"></div>
+        
+        <h2 class="text-5xl md:text-7xl font-black mb-8 relative z-10 tracking-tight">Let's build <br class="md:hidden"/> something.</h2>
+        
+        <button onclick="openModal()" class="hover-trigger inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-brand-green hover:scale-105 transition-all duration-300 cursor-none relative z-10">
+            Say Hello
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </button>
+    </section>
+
+    <footer class="bg-[#020202] pt-20 pb-8 px-6 md:px-20 max-w-7xl mx-auto w-full relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            
+            <div class="md:col-span-2">
+                <div class="text-2xl font-bold tracking-widest text-white mb-4">ACHINTYA</div>
+                <p class="text-gray-400 max-w-sm mb-6 text-sm leading-relaxed">A Full-Stack Developer blending design, performance, and scalability to build digital experiences that matter.</p>
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-gray-300">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-green opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-green"></span>
+                    </span>
+                    Available for new opportunities
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-semibold mb-6 uppercase tracking-widest text-xs">Navigation</h4>
+                <ul class="space-y-4 text-sm text-gray-400">
+                    <li><a href="#home" class="hover-trigger hover:text-brand-green transition-colors cursor-none inline-block">Home</a></li>
+                    <li><a href="#about" class="hover-trigger hover:text-brand-green transition-colors cursor-none inline-block">About</a></li>
+                    <li><a href="#work" class="hover-trigger hover:text-brand-green transition-colors cursor-none inline-block">Work</a></li>
+                    <li><a href="#contact" class="hover-trigger hover:text-brand-green transition-colors cursor-none inline-block">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-6 uppercase tracking-widest text-xs">Socials</h4>
+                <ul class="space-y-4 text-sm text-gray-400">
+                    <li><a href="https://github.com/Aryaswapnil07" target="_blank" rel="noopener noreferrer" class="hover-trigger hover:text-brand-green transition-colors cursor-none inline-flex items-center gap-2">GitHub ↗</a></li>
+                    <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover-trigger hover:text-brand-green transition-colors cursor-none inline-flex items-center gap-2">LinkedIn ↗</a></li>
+                    <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover-trigger hover:text-brand-green transition-colors cursor-none inline-flex items-center gap-2">Twitter ↗</a></li>
+                    <li><a href="mailto:your.email@example.com" class="hover-trigger hover:text-brand-green transition-colors cursor-none inline-flex items-center gap-2">Email ↗</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-xs text-gray-500 gap-4">
+            <p>&copy; 2026 Achintya Singh. All rights reserved.</p>
+            <p class="flex items-center gap-1">Designed & Built with <span class="text-brand-green">♥</span></p>
+            <a href="#home" class="hover-trigger flex items-center gap-2 text-gray-400 hover:text-white transition-colors cursor-none">
+                Back to top 
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+            </a>
+        </div>
+    </footer>
+
+    <div id="contactModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+        <div id="modalCard" class="bg-gray-900 border border-gray-800 p-8 rounded-2xl w-full max-w-md relative transform scale-95 transition-transform duration-300 mx-4">
+            <button onclick="closeModal()" class="hover-trigger absolute top-4 right-4 text-gray-500 hover:text-white cursor-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <h3 class="text-2xl font-bold mb-2 text-white">Get in Touch</h3>
+            <p class="text-gray-400 text-sm mb-6">I'm currently available for freelance projects or internships.</p>
+            <form class="space-y-6">
+                <div class="space-y-1">
+                    <label class="text-xs uppercase tracking-widest text-gray-500 font-bold">Name</label>
+                    <input type="text" class="hover-trigger w-full bg-transparent border-b border-gray-700 py-2 text-white focus:outline-none focus:border-brand-green transition-colors cursor-none" placeholder="Enter your name">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-xs uppercase tracking-widest text-gray-500 font-bold">Email</label>
+                    <input type="email" class="hover-trigger w-full bg-transparent border-b border-gray-700 py-2 text-white focus:outline-none focus:border-brand-green transition-colors cursor-none" placeholder="Enter your email">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-xs uppercase tracking-widest text-gray-500 font-bold">Message</label>
+                    <textarea rows="3" class="hover-trigger w-full bg-transparent border-b border-gray-700 py-2 text-white focus:outline-none focus:border-brand-green transition-colors resize-none cursor-none" placeholder="Tell me about your project..."></textarea>
+                </div>
+                <button type="button" class="hover-trigger relative w-full overflow-hidden px-6 py-3 border border-white/20 rounded-full text-xs font-bold uppercase tracking-widest group cursor-none mt-4">
+                    <span class="absolute inset-0 bg-brand-green transition-transform duration-500 ease-out origin-right scale-x-0 group-hover:origin-left group-hover:scale-x-100"></span>
+                    <span class="relative z-10 group-hover:text-black transition-colors duration-300">Send Message</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), direction: 'vertical', gestureDirection: 'vertical', smooth: true, mouseMultiplier: 1, smoothTouch: false, touchMultiplier: 2 })
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) { e.preventDefault(); lenis.scrollTo(this.getAttribute('href')); });
+        });
+
+        const dot = document.getElementById('cursor-dot');
+        const outline = document.getElementById('cursor-outline');
+        const outlineRing = document.getElementById('cursor-outer-ring');
+        const magnifyContainer = document.getElementById('magnify-container');
+        const magnifyGlass = document.getElementById('magnify-glass');
+        const revealBtn = document.getElementById('reveal-btn');
+        const heroCodeCard = document.getElementById('hero-code-card');
+        
+        let mouseX = 0, mouseY = 0;
+        let outlineX = 0, outlineY = 0;
+        let ringX = 0, ringY = 0; 
+        let isRevealed = false;
+
+        revealBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            isRevealed = true;
+            console.log("Welcome to Swapnil's Portfolio 🚀");
+            magnifyContainer.style.opacity = '0';
+            setTimeout(() => { magnifyContainer.style.display = 'none'; }, 500);
+            heroCodeCard.classList.remove('hidden');
+            heroCodeCard.style.opacity = '0';
+            heroCodeCard.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+                heroCodeCard.style.transition = 'all 0.5s ease-out';
+                heroCodeCard.style.opacity = '1';
+                heroCodeCard.style.transform = 'translateY(0)';
+            }, 10);
+            revealBtn.style.opacity = '0';
+            revealBtn.style.pointerEvents = 'none';
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX; mouseY = e.clientY;
+            
+            dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+            
+            if (magnifyContainer && !isRevealed) {
+                const rect = magnifyContainer.getBoundingClientRect();
+                if (mouseX >= rect.left && mouseX <= rect.right && mouseY >= rect.top && mouseY <= rect.bottom) {
+                    const x = mouseX - rect.left;
+                    const y = mouseY - rect.top;
+                    magnifyGlass.style.clipPath = `circle(60px at ${x}px ${y}px)`;
+                } else {
+                    magnifyGlass.style.clipPath = `circle(0px at 50% 50%)`;
+                }
+            }
+        });
+
+        function animateCursor() {
+            outlineX += (mouseX - outlineX) * 0.15; 
+            outlineY += (mouseY - outlineY) * 0.15;
+            outline.style.transform = `translate(${outlineX}px, ${outlineY}px) translate(-50%, -50%)`;
+            
+            ringX += (mouseX - ringX) * 0.08; 
+            ringY += (mouseY - ringY) * 0.08;
+            outlineRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        function initHoverEffects() {
+            document.querySelectorAll('.hover-trigger, a, button, input, textarea').forEach(trigger => {
+                trigger.addEventListener('mouseenter', () => { 
+                    outline.classList.add('scale-150', 'bg-brand-green/10', 'border-transparent'); 
+                    outline.classList.remove('border-brand-green/50');
+                    outlineRing.classList.add('scale-[2]', 'opacity-50');
+                });
+                trigger.addEventListener('mouseleave', () => { 
+                    outline.classList.remove('scale-150', 'bg-brand-green/10', 'border-transparent'); 
+                    outline.classList.add('border-brand-green/50'); 
+                    outlineRing.classList.remove('scale-[2]', 'opacity-50');
+                });
+            });
+        }
+        initHoverEffects();
+
+        const modal = document.getElementById('contactModal');
+        const modalCard = document.getElementById('modalCard');
+        function openModal() { modal.classList.remove('hidden'); setTimeout(() => { modal.classList.remove('opacity-0'); modal.classList.add('flex'); modalCard.classList.remove('scale-95'); modalCard.classList.add('scale-100'); }, 10); }
+        function closeModal() { modal.classList.add('opacity-0'); modalCard.classList.remove('scale-100'); modalCard.classList.add('scale-95'); setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); }, 300); }
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    </script>
+</body>
+</html>
